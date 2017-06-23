@@ -10,6 +10,7 @@ PollyMolly is a AWS Polly node.js wrapper with a better speech synthesis algorit
 
 ## Todo
 - [ ] Download mp3s from AWS Polly
+  - [ ] Large file download 
 - [ ] "Natural Pause" Algorithm
 - [ ] Improved Pronunciation  
 
@@ -19,14 +20,14 @@ const PollyMolly = require('pollymolly')
 
 /**
  * Text -> SSML
- * @param  {string} string None SSML string
+ * @param  {string} Plain text
  * @return {string}
  */
 PollyMolly.text2ssml('Hello World') # <speak>Hello World</speak>
 
 /**
  * SSML -> Text
- * @param  {string} string SSML string
+ * @param  {string} SSML string
  * @return {string}
  */
 PollyMolly.text2ssml('<speak>Hello World</speak>') # Hello World
