@@ -11,7 +11,7 @@ module.exports = {
 
   /**
    * Text -> SSML
-   * @param  {string} string None SSML string
+   * @param  {string} None SSML string
    * @return {string}
    */
   ssml2text: function(string) {
@@ -20,7 +20,7 @@ module.exports = {
 
   /**
    * SSML -> Text
-   * @param  {string} string SSML string
+   * @param  {string} SSML string
    * @return {string}
    */
   text2ssml: function(string) {
