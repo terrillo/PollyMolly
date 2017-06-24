@@ -33,7 +33,7 @@ PollyMolly.text2ssml('Hello World')
 ### SSML -> Text
 Convert Speech Synthesis Markup Language to plain text
 ```
-PollyMolly.text2ssml('<speak>Hello World</speak>')
+PollyMolly.ssml2text('<speak>Hello World</speak>')
 > Hello World
 ```
 
