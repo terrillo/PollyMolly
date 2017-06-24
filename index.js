@@ -17,7 +17,7 @@ const PollyMolly = {
    */
   isText: function(string) {
     const SSMLtag = /<[^>]+>/ig;
-    if (SSMLtag.exec(string) == null) {
+    if (SSMLtag.exec(string) == null) { //!arg1
       return true
     }
     else {
@@ -32,7 +32,7 @@ const PollyMolly = {
    */
   isSSML: function(string) {
     const SSMLtag = /<[^>]+>/ig;
-    if (SSMLtag.exec(string) !== null) {
+    if (SSMLtag.exec(string) !== null) { //!arg1
       return true
     }
     else {
@@ -99,7 +99,7 @@ const PollyMolly = {
    */
   natural: function(string) {
     if (PollyMolly.isText(string)) {
-      string = PollyMolly.text2ssml(string)
+      string = PollyMolly.text2ssml(string) //!arg1
     }
 
     // Natural Pauses

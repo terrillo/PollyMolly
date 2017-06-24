@@ -72,3 +72,4 @@ PollyMolly.download('Hello World', 'sound.mp3')
 **0.2v**
 - `isSSML()`
 - `isText()`
+- `natural()`
