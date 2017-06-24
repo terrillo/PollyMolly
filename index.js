@@ -55,8 +55,10 @@ const PollyMolly = {
    * @return {string}
    */
   text2ssml: function(string) {
-    const planText = PollyMolly.ssml2text(string) //!arg1
-    return `<speak>${planText}</speak>`;
+    if (PollyMolly.isText(string)) {
+      string = PollyMolly.ssml2text(string) //!arg1
+    }
+    return `<speak>${string}</speak>`;
   },
 
   /**
