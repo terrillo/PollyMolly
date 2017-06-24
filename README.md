@@ -50,6 +50,13 @@ PollyMolly.isSSML('<speak>Hello World</speak>')
 > false
 ```
 
+### Natural `natural()`
+Convert a string to a more natural speaking SSML
+```
+PollyMolly.natural('The curator painted the dinosaur orange - a color hated by everyone.')
+> <speak>The curator painted the dinosaur orange <break time="20ms"/> a color hated by everyone.</speak>
+```
+
 ### Download File `download()`
 Download .mp3 from AWS Polly
 ```

@@ -92,6 +92,11 @@ const PollyMolly = {
     })
   },
 
+  /**
+   * Convert a string to a more natural speaking SSML
+   * @param  {string} string
+   * @return {string} - SSML
+   */
   natural: function(string) {
     if (PollyMolly.isText(string)) {
       string = PollyMolly.text2ssml(string)
