@@ -90,6 +90,18 @@ const PollyMolly = {
         }
       }
     })
+  },
+
+  natural: function(string) {
+    if (PollyMolly.isText(string)) {
+      string = PollyMolly.text2ssml(string)
+    }
+
+    // Natural Pauses
+    string = string.replace('-', '<break time="20ms"/>')
+
+    // Done
+    return string
   }
 
 }
