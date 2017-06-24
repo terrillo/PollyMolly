@@ -1,13 +1,32 @@
 {
   "name": "pollymolly",
   "version": "0.1.0",
-  "description": "",
+  "description": "PollyMolly is a AWS Polly node.js wrapper with a better speech synthesis algorithm to provided a more natural sounding voice.",
   "main": "index.js",
+  "homepage": "https://github.com/terrillo/PollyMolly",
+  "author": "Terrillo Walls <terrillo@terrillo.me>",
+  "contributors": [],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terrillo/PollyMolly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/terrillo/PollyMolly/issues"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "keywords": [
+    "aws",
+    "aws-sdk",
+    "aws-polly",
+    "speech-synthesis",
+    "SSML"
+  ],
+  "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.77.0"
   }
