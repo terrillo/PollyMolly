@@ -7,33 +7,47 @@ PollyMolly is a AWS Polly node.js wrapper with a better speech synthesis algorit
 ## Features
 - Convert Text to SSML
 - Convert SSML to Text
+- Download mp3 from AWS Polly
 
 ## Todo
-- [ ] Download mp3s from AWS Polly
-  - [ ] Large file download 
+- [x] Download mp3s from AWS Polly
+  - [ ] Large file download
 - [ ] "Natural Pause" Algorithm
 - [ ] Improved Pronunciation  
+- [ ] Change Voice
+- [ ] Change region
 
 ## Usage
 ```
 const PollyMolly = require('pollymolly')
+```
 
-/**
- * Text -> SSML
- * @param  {string} Plain text
- * @return {string}
- */
-PollyMolly.text2ssml('Hello World') # <speak>Hello World</speak>
+**Text -> SSML**
+Convert a plain text string to the Speech Synthesis Markup Language
+```
+PollyMolly.text2ssml('Hello World')
+```
+```
+<speak>Hello World</speak>
+```
 
-/**
- * SSML -> Text
- * @param  {string} SSML string
- * @return {string}
- */
-PollyMolly.text2ssml('<speak>Hello World</speak>') # Hello World
+**SSML -> Text**
+Convert Speech Synthesis Markup Language to plain text
+```
+PollyMolly.text2ssml('<speak>Hello World</speak>')
 
+```
+```
+Hello World
+```
+
+**Download File**
+```
+PollyMolly.download('Hello World', 'sound.mp3')
 ```
 
 ## Changelog
+**0.1v**
 - `text2ssml()`
 - `ssml2text()`
+- `download()`
