@@ -9,6 +9,9 @@ PollyMolly is a AWS Polly node.js wrapper with a better speech synthesis algorit
 - Convert SSML to Text
 - Download mp3 from AWS Polly
 
+## Other docs
+- [Natural Language Rules](docs/natural-rules.md)
+
 ## Todo
 - [x] Download mp3s from AWS Polly
   - [ ] Large file download
@@ -54,7 +57,7 @@ PollyMolly.isSSML('<speak>Hello World</speak>')
 Convert a string to a more natural speaking SSML
 ```
 PollyMolly.natural('The curator painted the dinosaur orange - a color hated by everyone.')
-> <speak>The curator painted the dinosaur orange <break time="20ms"/> a color hated by everyone.</speak>
+> <speak>The curator painted the dinosaur orange <break time="200ms"/> a color hated by everyone.</speak>
 ```
 
 ### Download File `download()`

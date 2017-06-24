@@ -103,7 +103,7 @@ const PollyMolly = {
     }
 
     // Natural Pauses
-    string = string.replace('-', '<break time="20ms"/>')
+    string = string.replace('-', '<break time="200ms"/>')
 
     // Done
     return string
