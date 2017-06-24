@@ -11,6 +11,36 @@ const Polly = new AWS.Polly({
 const PollyMolly = {
 
   /**
+   * is Text
+   * @param  {string} string
+   * @return {boolean}
+   */
+  isText: function(string) {
+    const SSMLtag = /<[^>]+>/ig;
+    if (SSMLtag.exec(string) == null) {
+      return true
+    }
+    else {
+      return false
+    }
+  },
+
+  /**
+   * is SSML
+   * @param  {string} string
+   * @return {boolean}
+   */
+  isSSML: function(string) {
+    const SSMLtag = /<[^>]+>/ig;
+    if (SSMLtag.exec(string) !== null) {
+      return true
+    }
+    else {
+      return false
+    }
+  },
+
+  /**
    * Text -> SSML
    * @param  {string} string - Plain text
    * @return {string}
