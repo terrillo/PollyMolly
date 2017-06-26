@@ -11,6 +11,36 @@ const Polly = new AWS.Polly({
 const PollyMolly = {
 
   /**
+   * is Text
+   * @param  {string} string
+   * @return {boolean}
+   */
+  isText: function(string) {
+    const SSMLtag = /<[^>]+>/ig;
+    if (SSMLtag.exec(string) == null) { //!arg1
+      return true
+    }
+    else {
+      return false
+    }
+  },
+
+  /**
+   * is SSML
+   * @param  {string} string
+   * @return {boolean}
+   */
+  isSSML: function(string) {
+    const SSMLtag = /<[^>]+>/ig;
+    if (SSMLtag.exec(string) !== null) { //!arg1
+      return true
+    }
+    else {
+      return false
+    }
+  },
+
+  /**
    * Text -> SSML
    * @param  {string} string - Plain text
    * @return {string}
@@ -25,24 +55,27 @@ const PollyMolly = {
    * @return {string}
    */
   text2ssml: function(string) {
-    const planText = PollyMolly.ssml2text(string) //!arg1
-    return `<speak>${planText}</speak>`;
+    if (PollyMolly.isText(string)) {
+      string = PollyMolly.ssml2text(string) //!arg1
+    }
+    return `<speak>${string}</speak>`;
   },
 
   /**
    * Download .mp3 from AWS Polly
-   * @param  {string} string - Text or SSML string
+   * @param  {object} params - Text, OutputFormat, & VoiceId
    * @param  {string} file - Path to file including .mp3 extension
    * @param  {function} fn - Callback function
    * @return {string}
    */
-  download: function(string, file, fn) {
-    let params = {
-      'Text': string, //!arg1
+  download: function(params, file, fn) {
+    const defaultParams = {
+      'Text': 'Hello World',
       'OutputFormat': 'mp3',
       'VoiceId': 'Joanna'
     }
-    Polly.synthesizeSpeech(params, (err, data) => {
+    const requestParams = Object.assign({}, defaultParams, params); //!arg1
+    Polly.synthesizeSpeech(requestParams, (err, data) => {
       if (err) {
         console.log(err)
       } else if (data) {
@@ -58,6 +91,23 @@ const PollyMolly = {
         }
       }
     })
+  },
+
+  /**
+   * Convert a string to a more natural speaking SSML
+   * @param  {string} string
+   * @return {string} - SSML
+   */
+  natural: function(string) {
+    if (PollyMolly.isText(string)) {
+      string = PollyMolly.text2ssml(string) //!arg1
+    }
+
+    // Natural Pauses
+    string = string.replace('-', '<break time="200ms"/>')
+
+    // Done
+    return string
   }
 
 }
