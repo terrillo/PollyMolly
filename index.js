@@ -63,18 +63,19 @@ const PollyMolly = {
 
   /**
    * Download .mp3 from AWS Polly
-   * @param  {string} string - Text or SSML string
+   * @param  {object} params - Text, OutputFormat, & VoiceId
    * @param  {string} file - Path to file including .mp3 extension
    * @param  {function} fn - Callback function
    * @return {string}
    */
-  download: function(string, file, fn) {
-    let params = {
-      'Text': string, //!arg1
+  download: function(params, file, fn) {
+    const defaultParams = {
+      'Text': 'Hello World',
       'OutputFormat': 'mp3',
       'VoiceId': 'Joanna'
     }
-    Polly.synthesizeSpeech(params, (err, data) => {
+    const requestParams = Object.assign({}, defaultParams, params); //!arg1
+    Polly.synthesizeSpeech(requestParams, (err, data) => {
       if (err) {
         console.log(err)
       } else if (data) {

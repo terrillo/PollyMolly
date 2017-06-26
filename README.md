@@ -17,7 +17,7 @@ PollyMolly is a AWS Polly node.js wrapper with a better speech synthesis algorit
   - [ ] Large file download
 - [ ] "Natural Pause" Algorithm
 - [ ] Improved Pronunciation  
-- [ ] Change Voice
+- [x] Change Voice
 - [ ] Change region
 
 ## Usage
