@@ -7,6 +7,6 @@ console.log(PollyMolly.text2ssml('Hello World'))
 console.log(PollyMolly.ssml2text('<speak>Hello World</speak>'))
 
 // Download File
-PollyMolly.download('Hello World', 'media/hello.mp3', function() {
+PollyMolly.download({ 'Text': 'Hello World' }, 'media/hello.mp3', function() {
   console.log('File Saved!')
 })

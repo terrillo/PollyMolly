@@ -1,5 +1,5 @@
 # PollyMolly
-PollyMolly is a AWS Polly node.js wrapper with a better speech synthesis algorithm to provided a more natural sounding voice. The base of the project uses the Speech Synthesis Markup Language (SSML). https://www.w3.org/TR/speech-synthesis/
+PollyMolly is a AWS Polly node.js wrapper with a better speech synthesis algorithm to provided a more natural sounding voice. The base of the project uses the Speech Synthesis Markup Language (SSML). [https://www.w3.org/TR/speech-synthesis/](https://www.w3.org/TR/speech-synthesis/)
 
 ## Install
 `npm install pollymolly`
@@ -63,7 +63,9 @@ PollyMolly.natural('The curator painted the dinosaur orange - a color hated by e
 ### Download File `download()`
 Download .mp3 from AWS Polly
 ```
-PollyMolly.download('Hello World', 'sound.mp3')
+PollyMolly.download({ 'Text: 'Hello World' }, 'sound.mp3', function() {
+  console.log('DONE')
+})
 ```
 
 ## Changelog
@@ -76,3 +78,4 @@ PollyMolly.download('Hello World', 'sound.mp3')
 - `isSSML()`
 - `isText()`
 - `natural()`
+- `download()` now supports the full AWS download params. [http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Polly.html](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Polly.html)
