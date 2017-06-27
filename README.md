@@ -63,7 +63,7 @@ PollyMolly.natural('The curator painted the dinosaur orange - a color hated by e
 ### Download File `download()`
 Download .mp3 from AWS Polly
 ```
-PollyMolly.download({ 'Text: 'Hello World' }, 'sound.mp3', function() {
+PollyMolly.download({ 'Text': 'Hello World' }, 'sound.mp3', function() {
   console.log('DONE')
 })
 ```
