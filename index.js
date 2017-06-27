@@ -66,9 +66,10 @@ const PollyMolly = {
    * @param  {object} params - Text, OutputFormat, & VoiceId
    * @param  {string} file - Path to file including .mp3 extension
    * @param  {function} fn - Callback function
-   * @return {string}
+   * @return {object}
    */
   download: function(params, file, fn) {
+    if (!params.Text) return false;
     const defaultParams = {
       'Text': 'Hello World',
       'OutputFormat': 'mp3',
@@ -85,7 +86,10 @@ const PollyMolly = {
               return console.log(err)
             }
             if (fn) {
-              fn(file)
+              const results = {
+                'characters': (requestParams.Text).length,
+              }
+              fn(results)
             }
           })
         }
