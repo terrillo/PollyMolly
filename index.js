@@ -75,6 +75,14 @@ const PollyMolly = {
       'VoiceId': 'Joanna'
     }
     const requestParams = Object.assign({}, defaultParams, params); //!arg1
+
+    // Define Type
+    if (PollyMolly.isSSML(requestParams.Text)) {
+      requestParams.TextType = 'ssml';
+    } else {
+      requestParams.TextType = 'text';
+    }
+
     Polly.synthesizeSpeech(requestParams, (err, data) => {
       if (err) {
         console.log(err)
