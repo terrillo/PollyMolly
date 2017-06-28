@@ -63,8 +63,8 @@ PollyMolly.natural('The curator painted the dinosaur orange - a color hated by e
 ### Download File `download()`
 Download .mp3 from AWS Polly
 ```
-PollyMolly.download({ 'Text: 'Hello World' }, 'sound.mp3', function() {
-  console.log('DONE')
+PollyMolly.download({ 'Text: 'Hello World' }, 'sound.mp3', function(results) {
+  console.log(results)
 })
 ```
 
@@ -82,4 +82,5 @@ PollyMolly.download({ 'Text: 'Hello World' }, 'sound.mp3', function() {
 
 **0.3v**
 - Pronunciation Improvements
-- Fixed: Natural Pause not replacing all cases 
+- Fixed: Natural Pause not replacing all cases
+- `download()` - returns characters and duration

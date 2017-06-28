@@ -3,6 +3,7 @@
 const AWS = require('aws-sdk')
 const fs = require('fs')
 const path = require('path')
+const musicData = require('musicmetadata');
 
 const Polly = new AWS.Polly({
   signatureVersion: 'v4',
@@ -98,7 +99,16 @@ const PollyMolly = {
               const results = {
                 'characters': (requestParams.Text).length,
               }
-              fn(results)
+              var parser = musicData(fs.createReadStream(file),{ duration: true }, (err, metadata) => {
+                var talkItem = {};
+                if (err) {
+                  console.log('err:',err);
+                }
+                else {
+                  results.duration = metadata.duration;
+                  fn(results)
+                }
+              });
             }
           })
         }

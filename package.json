@@ -28,6 +28,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.77.0"
+    "aws-sdk": "^2.77.0",
+    "musicmetadata": "^2.0.5"
   }
 }
