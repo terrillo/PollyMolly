@@ -122,7 +122,7 @@ const PollyMolly = {
     // Natural Pauses
     string = string.replace(/-/g, '<break time="200ms"/>')
 
-    // Pronunciation Imporvements
+    // Pronunciation Improvements
     let pronunciations = fs.readFileSync(path.resolve(__dirname, 'data/pronunciations.json'), 'utf8');
     pronunciations = JSON.parse(pronunciations)
     Object.keys(pronunciations).forEach(function(val, index) {
