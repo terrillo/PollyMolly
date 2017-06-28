@@ -1,7 +1,8 @@
 'use strict'
 
 const AWS = require('aws-sdk')
-const Fs = require('fs')
+const fs = require('fs')
+const path = require('path')
 
 const Polly = new AWS.Polly({
   signatureVersion: 'v4',
@@ -66,26 +67,38 @@ const PollyMolly = {
    * @param  {object} params - Text, OutputFormat, & VoiceId
    * @param  {string} file - Path to file including .mp3 extension
    * @param  {function} fn - Callback function
-   * @return {string}
+   * @return {object}
    */
   download: function(params, file, fn) {
+    if (!params.Text) return false;
     const defaultParams = {
       'Text': 'Hello World',
       'OutputFormat': 'mp3',
       'VoiceId': 'Joanna'
     }
     const requestParams = Object.assign({}, defaultParams, params); //!arg1
+
+    // Define Type
+    if (PollyMolly.isSSML(requestParams.Text)) {
+      requestParams.TextType = 'ssml';
+    } else {
+      requestParams.TextType = 'text';
+    }
+
     Polly.synthesizeSpeech(requestParams, (err, data) => {
       if (err) {
         console.log(err)
       } else if (data) {
         if (data.AudioStream instanceof Buffer) {
-          Fs.writeFile(file, data.AudioStream, function(err) { //!arg2
+          fs.writeFile(file, data.AudioStream, function(err) { //!arg2
             if (err) {
               return console.log(err)
             }
             if (fn) {
-              fn(file)
+              const results = {
+                'characters': (requestParams.Text).length,
+              }
+              fn(results)
             }
           })
         }
@@ -103,8 +116,20 @@ const PollyMolly = {
       string = PollyMolly.text2ssml(string) //!arg1
     }
 
+    // Clean up
+    string = string.toLowerCase()
+
     // Natural Pauses
-    string = string.replace('-', '<break time="200ms"/>')
+    string = string.replace(/-/g, '<break time="200ms"/>')
+
+    // Pronunciation Improvements
+    let pronunciations = fs.readFileSync(path.resolve(__dirname, 'data/pronunciations.json'), 'utf8');
+    pronunciations = JSON.parse(pronunciations)
+    Object.keys(pronunciations).forEach(function(val, index) {
+      const term = val;
+      const value = Object.values(pronunciations)[index];
+      string = string.replace(term, `<phoneme ph="${value}">${term}</phoneme>`)
+    });
 
     // Done
     return string

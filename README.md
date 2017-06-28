@@ -15,8 +15,8 @@ PollyMolly is a AWS Polly node.js wrapper with a better speech synthesis algorit
 ## Todo
 - [x] Download mp3s from AWS Polly
   - [ ] Large file download
-- [ ] "Natural Pause" Algorithm
-- [ ] Improved Pronunciation  
+- [x] "Natural Pause" Algorithm
+- [x] Improved Pronunciation  
 - [x] Change Voice
 - [ ] Change region
 
@@ -79,3 +79,7 @@ PollyMolly.download({ 'Text': 'Hello World' }, 'sound.mp3', function() {
 - `isText()`
 - `natural()`
 - `download()` now supports the full AWS download params. [http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Polly.html](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Polly.html)
+
+**0.3v**
+- Pronunciation Improvements
+- Fixed: Natural Pause not replacing all cases 
